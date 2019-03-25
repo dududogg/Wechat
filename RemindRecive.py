@@ -16,6 +16,7 @@ def text_reply(msg):
         username = itchat.search_friends(userName=msg.FromUserName)['NickName']
         print(username,msg.text)
         #Things & Remind_time can't seprated now, wait to resole.
+        #TODO 拆分时间和提醒事项
         UpdateRemindSql = "INSERT INTO main_list (Person,Things,Update_time,Remind_time,Done) \
         VALUES ('{}','{}','{}','{}',{})".format(username,msg.text,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) ,'2019-03-20 16:40:00','0')
         print(UpdateRemindSql)

@@ -3,11 +3,14 @@ import connectclient as cl
 import time
 import itchat
 
+#TODO 如何实现轮巡，是否时间需要精确到秒
+
 # itchat auto login and longtime stay
 itchat.auto_login(hotReload=True)
 
 # 事件提醒
 # Mysql login & finish search
+# TODO name
 name = '葛亚东'
 sql = "select * from main_list where Person = '{}'".format(name)
 events = cs.update(sql)
