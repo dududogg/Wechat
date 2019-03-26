@@ -18,8 +18,9 @@ number = len(events)
 
 # Reminder
 for i in range(0,number):
-    remind_time = '{}'.format(events[i][4])
-    if time.mktime(time.strptime(remind_time, '%Y-%m-%d %H:%M:%S')) > time.time():
+    remind_time1 = '{}'.format(events[i][4])
+    remind_time2 = time.mktime(time.strptime(remind_time, '%Y-%m-%d %H:%M:%S'))
+    if (remind_time2 > (time.time()+0.0417)) and (remind_time2 < (time.time()+0.83)):
         cl.SendMessage(name,'{} {} 需要完成'.format(events[i][4],events[i][1]))
 
 
