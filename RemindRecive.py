@@ -17,12 +17,17 @@ def text_reply(msg):
         print(username,msg.text)
         #Things & Remind_time can't seprated now, wait to resole.
         #TODO 拆分时间和提醒事项
+        Record = msg.text.split('#')
+        time1 = Record[0].ljust(14,'0')
+        ThingS = Record[1]
+        time2 = "{}-{}-{} {}:{}:{}".format(time1[0:4],time1[4:6],time1[6:8],time1[8:10],time1[10:12],time1[12:14])
         UpdateRemindSql = "INSERT INTO main_list (Person,Things,Update_time,Remind_time,Done) \
-        VALUES ('{}','{}','{}','{}',{})".format(username,msg.text,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) ,'2019-03-20 16:40:00','0')
+        VALUES ('{}','{}','{}','{}',{})".format(username,ThingS,time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) ,time2,'0')
         print(UpdateRemindSql)
         cs.insert(UpdateRemindSql)
 
 # itchat auto login and longtime stay
-itchat.auto_login(hotReload=True)
-itchat.run()
+# itchat.auto_login(hotReload=True)
+# itchat.run()
 
+cl.login()
